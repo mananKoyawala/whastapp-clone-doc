@@ -16,6 +16,33 @@
 
   <!-- Theme CSS -->
   <style>
+    .code-container b {
+            font-size: 20px;
+        }
+
+    /* res showing css*/
+     .code-container {
+            position: relative;
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .s {
+          font-style: bold;
+        }
     /*!
      * Bootstrap  v5.2.1 (https://getbootstrap.com/)
      * Copyright 2011-2022 The Bootstrap Authors
@@ -267,10 +294,10 @@
           <li class="nav-item section-title">
             <a class="nav-link scrollto" href="#section-1">Introduction</a>
             <ul class="nav flex-column mt-2 lvl2">
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-1-1">Section Item 1.1</a>
-              </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
+                <a class="nav-link scrollto" href="#item-1-1">Introduction</a>
+              </li> -->
+              <!-- <li class="nav-item">
                 <a class="nav-link scrollto" href="#item-1-2">Section Item 1.2</a>
               </li>
               <li class="nav-item">
@@ -284,7 +311,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link scrollto" href="#item-1-6">Section Item 1.6</a>
-              </li>
+              </li> -->
             </ul>
           </li>
 
@@ -315,31 +342,23 @@
           </li>
 
           <li class="nav-item section-title">
-            <a class="nav-link scrollto" href="#section-3">APIs</a>
-            <ul class="nav flex-column mt-2 lvl2">
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-3-1">Section Item 3.1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-3-2">Section Item 3.2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-3-3">Section Item 3.3</a>
-              </li>
-            </ul>
+            <a class="nav-link scrollto" href="#health">Health Check</a>
           </li>
 
           <li class="nav-item section-title">
-            <a class="nav-link scrollto" href="#section-4">Integrations</a>
+            <a class="nav-link scrollto" href="#user">User</a>
             <ul class="nav flex-column mt-2 lvl2">
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-4-1">Section Item 4.1</a>
+                <a class="nav-link scrollto" href="#user-1">Signup<a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-4-2">Section Item 4.2</a>
+                <a class="nav-link scrollto" href="#user-2">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-4-3">Section Item 4.3</a>
+                <a class="nav-link scrollto" href="#user-3">Verify</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#user-4">Token Refresh</a>
               </li>
             </ul>
           </li>
@@ -429,21 +448,19 @@
 
           <header class="docs-header">
             <h1 class="docs-heading">Introduction <span class="docs-time">Secondary text</span></h1>
+            <h1 class="docs-heading" style="font-size: 28px;">WhatsApp Clone API Documentation <span class="docs-time">Secondary text</span></h1>
             <section class="docs-intro">
-              <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus
-                condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh
-                convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce
-                in malesuada odio.</p>
+              <p>Welcome to the API documentation for the WhatsApp Clone Backend. This API allows developers to integrate chat functionality, including one-on-one and group chats, into their applications. It supports WebSockets for real-time messaging, JWT and refresh tokens for authentication, encryption for security, S3 for file uploads, and PostgreSQL for data storage.</p>
             </section>
 
-            <h5>Github Code Example:</h5>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo, possimus quae error nulla et, distinctio facilis iusto consectetur ullam provident unde neque cumque obcaecati omnis ipsa corrupti magnam dolor minima.</p>
+            <h5>Author Name</h5>
+            <p>Manan Koyawala</p>
 
             <h5>Highlight.js Example:</h5>
             <p>Lorem ipsum dolor sit amet <a href="#">consectetur</a> adipisicing elit. Nihil laudantium ex quis. Velit ad quibusdam alias dolorum exercitationem molestiae, commodi repellat culpa soluta vitae? Incidunt ratione esse quisquam nam earum.</p>
             <div class="docs-code-block">
               <pre class="shadow-lg rounded"><code class="language-json hljs">[
-  {
+      {
     <span class="hljs-attr">"title"</span>: <span class="hljs-string">"apples"</span>,
     <span class="hljs-attr">"count"</span>: [<span class="hljs-number">12000</span>, <span class="hljs-number">20000</span>],
     <span class="hljs-attr">"description"</span>: {<span class="hljs-attr">"text"</span>: <span class="hljs-string">"..."</span>, <span class="hljs-attr">"sensitive"</span>: <span class="hljs-literal">false</span>}
@@ -932,52 +949,43 @@
         </article>
 
 
-        <article class="docs-article" id="section-3">
+        <article class="docs-article" id="health">
           <header class="docs-header">
-            <h1 class="docs-heading">APIs</h1>
+            <h1 class="docs-heading">Health Check Endpoint</h1>
             <section class="docs-intro">
-              <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus
-                condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh
-                convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce
-                in malesuada odio.</p>
+              <p>The health check endpoint allows you to verify that the API service is running and available. This is useful for monitoring and alerting systems.</p>
+
+              <h4>Health Check</h4>
+              <p><b>Method :</b>
+                <code> GET</code>
+              </p>
+              <p><b>Endpoint :</b>
+                <code> /health</code>
+              </p>
+              <p><b>Description :</b>
+                <code>Returns the status of the API service.</code>
+              </p>
+              <p><b>Request :</b>
+                <code>None</code>
+              </p>
+              <p><b>Response :</b> 
+                <div class="code-container">
+                  <button class="copy-button" onclick="copyToClipboard('register-response')">Copy</button>
+                  <pre id="register-response">
+{
+  "status": "OK"
+}
+</pre>
+              </div>
+              </p>
             </section>
           </header>
-
-          <section class="docs-section" id="item-3-1">
-            <h2 class="section-heading">Section Item 3.1</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-
-          <section class="docs-section" id="item-3-2">
-            <h2 class="section-heading">Section Item 3.2</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-
-          <section class="docs-section" id="item-3-3">
-            <h2 class="section-heading">Section Item 3.3</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
         </article>
 
 
-        <article class="docs-article" id="section-4">
+        <article class="docs-article" id="user">
           <header class="docs-header">
-            <h1 class="docs-heading">Intergrations</h1>
+            <h1 class="docs-heading">User Endpoints</h1>
             <section class="docs-intro">
               <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus
                 condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh
@@ -987,8 +995,57 @@
           </header>
 
 
-          <section class="docs-section" id="item-4-1">
-            <h2 class="section-heading">Section Item 4.1</h2>
+          <section class="docs-section" id="user-1">
+            <h2 class="section-heading">1. Signup</h2>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /signup</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Register user with mobile number</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>name</b>&nbsp;string | <b>mobile</b>&nbsp;int | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string
+              </div>
+              <div class="code-container">
+                <button class="copy-button" onclick="copyToClipboard('signup')">Copy</button>
+                <pre id="signup">
+{
+    "name"    : "Jone",
+    "mobile"  : 8888888888,
+    "about"   : "we are here.",
+    "image"   : "https://unsplash.com/s/photos/image"
+} 
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>name</b>&nbsp;string | <b>mobile</b>&nbsp;int | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string
+              </div>
+              <div class="code-container">
+                <button class="copy-button" onclick="copyToClipboard('login')">Copy</button>
+                <pre id="login">
+{
+    "data": {
+        "id"    : 9,
+        "name"  : "Jone",
+        "mobile": 8888888889,
+        "about" : "we are here.",
+        "image" : "https://unsplash.com/s/photos/image"
+    }
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+
+          <section class="docs-section" id="user-2">
+            <h2 class="section-heading">2. Login</h2>
             <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
               Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
               imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
@@ -997,8 +1054,8 @@
           </section>
 
 
-          <section class="docs-section" id="item-4-2">
-            <h2 class="section-heading">Section Item 4.2</h2>
+          <section class="docs-section" id="user-3">
+            <h2 class="section-heading">3. Verify</h2>
             <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
               Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
               imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
@@ -1006,9 +1063,8 @@
               est. Vestibulum ultricies malesuada tempor.</p>
           </section>
 
-
-          <section class="docs-section" id="item-4-3">
-            <h2 class="section-heading">Section Item 4.3</h2>
+          <section class="docs-section" id="user-4">
+            <h2 class="section-heading">4. Token Refresh</h2>
             <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
               Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
               imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
@@ -1355,6 +1411,14 @@
 
 
   <script>
+     function copyToClipboard(elementId) {
+            var copyText = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(copyText).then(function() {
+                alert('Copied to clipboard');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
     /*!
      * Bootstrap v5.2.1 (https://getbootstrap.com/)
      * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
