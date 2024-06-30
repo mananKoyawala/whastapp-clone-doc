@@ -257,7 +257,7 @@
           </button>
           <div class="site-logo">
             <a class="navbar-brand" href="index.html">
-              <span class="logo-text">Doc <span class="text-alt">Doc</span></span>
+              <span class="logo-text">Whatsapp <span class="text-alt">clone</span></span>
             </a>
             <span class="badge bg-primary"></span>
           </div>
@@ -270,10 +270,6 @@
               <div id="results"></div>
             </form>
           </div>
-
-          <button type="button" class="btn-changelog btn btn-primary d-none d-lg-flex" data-bs-toggle="modal" data-bs-target="#changelogModal">
-            Changelog
-          </button>
         </div>
       </div>
     </div>
@@ -970,8 +966,7 @@
               </p>
               <p><b>Response :</b> 
                 <div class="code-container">
-                  <button class="copy-button" onclick="copyToClipboard('register-response')">Copy</button>
-                  <pre id="register-response">
+                  <pre id="">
 {
   "status": "OK"
 }
@@ -987,10 +982,7 @@
           <header class="docs-header">
             <h1 class="docs-heading">User Endpoints</h1>
             <section class="docs-intro">
-              <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus
-                condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh
-                convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce
-                in malesuada odio.</p>
+              <h4>All routes of users are unprotected, means anyone can access it without JWT token.</h4>
             </section>
           </header>
 
@@ -1011,8 +1003,7 @@
                 <b>name</b>&nbsp;string | <b>mobile</b>&nbsp;int | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string
               </div>
               <div class="code-container">
-                <button class="copy-button" onclick="copyToClipboard('signup')">Copy</button>
-                <pre id="signup">
+                <pre id="signup-req">
 {
     "name"    : "Jone",
     "mobile"  : 8888888888,
@@ -1027,8 +1018,7 @@
                 <b>id</b>&nbsp;int | <b>name</b>&nbsp;string | <b>mobile</b>&nbsp;int | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string
               </div>
               <div class="code-container">
-                <button class="copy-button" onclick="copyToClipboard('login')">Copy</button>
-                <pre id="login">
+                <pre id="signup-res">
 {
     "data": {
         "id"    : 9,
@@ -1046,30 +1036,115 @@
 
           <section class="docs-section" id="user-2">
             <h2 class="section-heading">2. Login</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /login</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Login user with mobile number</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>mobile</b>&nbsp;int
+              </div>
+              <div class="code-container">
+                <pre id="req-login">
+{
+  "mobile" : 8888888881
+} 
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <div class="code-container">
+                <b>id</b>&nbsp;int| <b>otp</b>&nbsp;string
+              </div>
+              <div class="code-container">
+                <pre id="res-login">
+{
+  "data": {
+      "id": "1",
+      "otp": "f1672345-9916-46c7-b1e2-8d7586563699"
+  }
+}
+</pre>
+            </div>
+            </p>
           </section>
 
 
           <section class="docs-section" id="user-3">
             <h2 class="section-heading">3. Verify</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /verify</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Verify the user details got by /login</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                Query Parameter <br>
+                <b>uid</b>&nbsp;int | <b>otp</b>&nbsp;string
+              </div>
+            </p>
+            <p><b>Response :</b> 
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>name</b>&nbsp;string | <b>mobile</b>&nbsp;int | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string | <b>last_seen</b>&nbsp;time | <b>is_online</b>&nbsp;bool | <b>token</b>&nbsp;string | <b>refresh_token</b>&nbsp;string
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": {
+      "id": 1,
+      "name": "Raju",
+      "mobile": 8888888881,
+      "about": "we are here.",
+      "image": "https://unsplash.com/s/photos/image",
+      "last_seen": "2024-06-20T09:29:52Z",
+      "is_online": false,
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVG9rZW5UeXBlIjoidG9rZW4iLCJleHAiOjE3MTk4MzMzNzZ9.pHFz3-n3wz6Z_J3EEt6MgN_6FqR8jN-Hf2THg0y7lKs",
+      "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVG9rZW5UeXBlIjoicmVmcmVzaF90b2tlbiIsImV4cCI6MTcyMDM1MTc3Nn0.nnn64B97skBzXW4c3IMs7OzOPtYaaz0Z41LsxaKgPZM"
+  }
+}
+</pre>
+            </div>
+            </p>
           </section>
 
           <section class="docs-section" id="user-4">
             <h2 class="section-heading">4. Token Refresh</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /token</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Get new token only by refresh_token</code>
+            </p>
+            <p><b>Request :</b>
+              Send Refresh token in Header as `X-AUTH-TOKEN`
+            </p>
+            <p><b>Response :</b> 
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>name</b>&nbsp;string | <b>mobile</b>&nbsp;int | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string | <b>last_seen</b>&nbsp;time | <b>is_online</b>&nbsp;bool | <b>token</b>&nbsp;string | <b>refresh_token</b>&nbsp;string
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": {
+      "id": 1,
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVG9rZW5UeXBlIjoidG9rZW4iLCJleHAiOjE3MTk4MzM3MDR9.LYd13fn71indAoWxhuQEFE1_32Ah00M9OW0xAiJa-Q0"
+  }
+}
+</pre>
+            </div>
+            </p>
           </section>
 
         </article>
