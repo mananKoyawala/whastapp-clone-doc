@@ -360,16 +360,22 @@
           </li>
 
           <li class="nav-item section-title">
-            <a class="nav-link scrollto" href="#section-5">Utilities</a>
+            <a class="nav-link scrollto" href="#message">Message</a>
             <ul class="nav flex-column mt-2 lvl2">
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-5-1">Section Item 5.1</a>
+                <a class="nav-link scrollto" href="#message-1">Pull all messages</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-5-2">Section Item 5.2</a>
+                <a class="nav-link scrollto" href="#message-2">Pull all group messages</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-5-3">Section Item 5.3</a>
+                <a class="nav-link scrollto" href="#message-3">Updage read message</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#message-4">Delete message</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#message-5">Delete group message</a>
               </li>
             </ul>
           </li>
@@ -1145,6 +1151,269 @@
 </pre>
             </div>
             </p>
+          </section>
+
+        </article>
+
+
+        <article class="docs-article" id="message">
+          <header class="docs-header">
+            <h1 class="docs-heading">Message Endpoints</h1>
+            <section class="docs-intro">
+              <h4>All routes of message are protected, means you need JWT token to access resources.</h4>
+            </section>
+          </header>
+
+
+          <section class="docs-section" id="message-1">
+            <h2 class="section-heading">1. Pull all one-on-one messages</h2>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /msgs</code>
+            </p>
+            <p><b>Description :</b>
+              <code>It pulls all the messages related to sender_id and receiver_id || <b>Note :</b>&nbsp;user can only access it's own resources only</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>sender_id</b>&nbsp;int | <b>receiver_id</b>&nbsp;int
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "sender_id" : 1,
+  "receiver_id" : 2
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              List of Messages <br>
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>sender_id</b>&nbsp;int | <b>receiver_id</b>&nbsp;int | <b>group_id</b>&nbsp;int | <b>members</b>&nbsp;null | <b>message_type</b>&nbsp;string | <b>message_text</b>&nbsp;string || <b>media_url</b>&nbsp;string | <b>is_read</b>&nbsp;bool | <b>created_at</b>&nbsp;time | <b>updated_at</b>&nbsp;time
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": [
+      {
+          "id": 48,
+          "sender_id": 1,
+          "receiver_id": 2,
+          "group_id": 0,
+          "is_group_msg": false,
+          "members": null,
+          "message_type": "text",
+          "message_text": "hii from 1",
+          "media_url": "",
+          "is_read": false,
+          "created_at": "2024-06-27T09:58:27Z",
+          "updated_at": "2024-06-27T09:58:27Z"
+      },
+      {
+          "id": 49,
+          "sender_id": 2,
+          "receiver_id": 1,
+          "group_id": 0,
+          "is_group_msg": false,
+          "members": null,
+          "message_type": "text",
+          "message_text": "hii from 2",
+          "media_url": "",
+          "is_read": false,
+          "created_at": "2024-06-27T09:58:52Z",
+          "updated_at": "2024-06-27T09:58:52Z"
+      }
+  ]
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+
+          <section class="docs-section" id="message-2">
+            <h2 class="section-heading">2. Pull all group messages</h2>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /msgs/group</code>
+            </p>
+            <p><b>Description :</b>
+              <code>It pulls all the messages based on group_id</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>group_id</b>&nbsp;int
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "group_id" : 1
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              List of Messages <br>
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>sender_id</b>&nbsp;int | <b>receiver_id</b>&nbsp;int | <b>group_id</b>&nbsp;int | <b>members</b>&nbsp;null | <b>message_type</b>&nbsp;string | <b>message_text</b>&nbsp;string || <b>media_url</b>&nbsp;string | <b>is_read</b>&nbsp;bool | <b>created_at</b>&nbsp;time | <b>updated_at</b>&nbsp;time
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": [
+      {
+          "id": 50,
+          "sender_id": 1,
+          "receiver_id": 1,
+          "group_id": 1,
+          "is_group_msg": true,
+          "members": null,
+          "message_type": "text",
+          "message_text": "hii from 1",
+          "media_url": "",
+          "is_read": false,
+          "created_at": "2024-06-27T10:04:56Z",
+          "updated_at": "2024-06-27T10:04:56Z"
+      },
+      {
+          "id": 51,
+          "sender_id": 1,
+          "receiver_id": 1,
+          "group_id": 1,
+          "is_group_msg": true,
+          "members": null,
+          "message_type": "text",
+          "message_text": "hii from 1",
+          "media_url": "",
+          "is_read": false,
+          "created_at": "2024-06-27T10:06:19Z",
+          "updated_at": "2024-06-27T10:06:19Z"
+      }
+  ]
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+
+          <section class="docs-section" id="message-3">
+            <h2 class="section-heading">3. Update read messages</h2>
+            <p><b>Method :</b>
+              <code> PATCH</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /msgs</code>
+            </p>
+            <p><b>Description :</b>
+              <code>It marked all the messages is_read as true by id</code>
+            </p>
+            <p><b>Request :</b>
+              List of id, sender_id, receiver_id
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>sender_id</b>&nbsp;int  | <b>receiver_id</b>&nbsp;int 
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "msg" : [
+      {
+          "id" : 7,
+          "sender_id" : 1,
+          "receiver_id" : 2
+      },
+      {
+          "id" : 8,
+          "sender_id" : 1,
+          "receiver_id" : 2
+      }
+  ]
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              List of Messages <br>
+              <div class="code-container">
+                <pre id="">
+{
+  "message": "all the messages are read updated"
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+          <section class="docs-section" id="message-4">
+            <h2 class="section-heading">4. Delete Message</h2>
+            <p><b>Method :</b>
+              <code> DELETE</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /msgs</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Delete message by id</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>sender_id</b>&nbsp;int  | <b>receiver_id</b>&nbsp;int 
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "id" : 6,
+  "sender_id" : 1,
+  "receiver_id" :2
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <div class="code-container">
+                <pre id="">
+{
+  "message": "message deleted successfully."
+}
+</pre>
+          </section>
+
+          <section class="docs-section" id="message-5">
+            <h2 class="section-heading">4. Delete Group Message</h2>
+            <p><b>Method :</b>
+              <code> DELETE</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /msgs/group</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Delete group message by id</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>group_id</b>&nbsp;int
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "id" : 24,
+  "group_id" : 1
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <div class="code-container">
+                <pre id="">
+{
+  "message": "message deleted successfully."
+}
+</pre>
           </section>
 
         </article>
