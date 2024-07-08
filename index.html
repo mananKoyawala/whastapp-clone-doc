@@ -19,6 +19,10 @@
     .code-container b {
             font-size: 20px;
         }
+      
+      .attrib {
+        color:black;
+      }
 
     /* res showing css*/
      .code-container {
@@ -376,6 +380,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link scrollto" href="#message-5">Delete group message</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#message-6">Send message</a>
               </li>
             </ul>
           </li>
@@ -1384,7 +1391,7 @@
           </section>
 
           <section class="docs-section" id="message-5">
-            <h2 class="section-heading">4. Delete Group Message</h2>
+            <h2 class="section-heading">5. Delete Group Message</h2>
             <p><b>Method :</b>
               <code> DELETE</code>
             </p>
@@ -1414,6 +1421,68 @@
   "message": "message deleted successfully."
 }
 </pre>
+          </section>
+
+          <section class="docs-section" id="message-6">
+            <h2 class="section-heading">6. Send message</h2>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> none</code>
+            </p>
+            <p><b>Description:</b>
+              <code>
+                  We need to send messages over WebSockets to enable users to receive messages in real-time. This mechanism only sends messages to users who are currently connected via WebSockets.
+                  <br>
+                  For a simple message, set <code class="attrib">is_group_msg=false</code> and provide a proper <code class="attrib">receiver_id</code>.
+                  <br>
+                  For a group message, set <code class="attrib">is_group_msg=true</code> and provide a valid <code class="attrib">group_id</code>.
+                  <br>
+                  If these guidelines are not followed, your message will be dropped.
+              </code>
+          </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>sender_id</b>&nbsp;int | <b>receiver_id</b>&nbsp;int | <b>group_id</b>&nbsp;int | <b>is_group_msg</b>&nbsp;bool | <b>message_type</b>&nbsp;string | <b>message_type</b>&nbsp;string Either 'text' or 'media' | <b>media_url</b>&nbsp;string
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "sender_id" : 1,
+  "receiver_id" : 2,
+  "group_id" : 1,
+  "is_group_msg" : false,
+  "message_type" : "text",
+  "message_text" : "Hello",
+  "media_url" : ""
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>sender_id</b>&nbsp;int | <b>receiver_id</b>&nbsp;int | <b>group_id</b>&nbsp;int | <b>members</b>&nbsp;null | <b>message_type</b>&nbsp;string | <b>message_text</b>&nbsp;string || <b>media_url</b>&nbsp;string | <b>is_read</b>&nbsp;bool | <b>created_at</b>&nbsp;time | <b>updated_at</b>&nbsp;time
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "id": 52,
+  "sender_id": 1,
+  "receiver_id": 2,
+  "group_id": 0,
+  "is_group_msg": false,
+  "members": null,
+  "message_type": "text",
+  "message_text": "Hello",
+  "media_url": "",
+  "is_read": false,
+  "created_at": "2024-07-08T19:04:02+05:30",
+  "updated_at": "2024-07-08T19:04:02+05:30"
+}
+</pre>
+            </div>
+            </p>
           </section>
 
         </article>
