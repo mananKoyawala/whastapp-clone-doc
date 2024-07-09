@@ -397,16 +397,19 @@
                 <a class="nav-link scrollto" href="#group-2">Add memeber</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#group-3">Get memebers by id</a>
+                <a class="nav-link scrollto" href="#group-3">Get all groups</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#message-4">Get group details</a>
+                <a class="nav-link scrollto" href="#group-4">Get group details</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#message-5">Delete group message</a>
+                <a class="nav-link scrollto" href="#group-5">Remove member</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#message-6">Send message</a>
+                <a class="nav-link scrollto" href="#group-6">Delete group message</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#group-7">Update group details</a>
               </li>
             </ul>
           </li>
@@ -1078,7 +1081,7 @@
             </p>
             <p><b>Request :</b>
               <div class="code-container">
-                Query Parameter <br>
+                Path Parameter <br>
                 <b>uid</b>&nbsp;int | <b>otp</b>&nbsp;string
               </div>
             </p>
@@ -1458,6 +1461,314 @@
 
         </article>
 
+        <article class="docs-article" id="group">
+          <header class="docs-header">
+            <h1 class="docs-heading">Group Endpoints</h1>
+            <section class="docs-intro">
+              <h4>All group routes are protected, meaning you need a JWT token to access resources.</h4>
+            </section>
+          </header>
+
+
+          <section class="docs-section" id="group-1">
+            <h2 class="section-heading">1. Create Group</h2>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /groups</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Create a new group
+                <br>
+                <code class="attrib">members </code>IDs of the user you want to add in the Group.
+                </code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>admin_id</b>&nbsp;int (userid) | <b>name</b>&nbsp;string | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string | <b>members</b>&nbsp;[]int64
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "admin_id" : 1,
+  "name" : "New group",
+  "about" : "group description",
+  "image" : "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?cs=srgb&dl=pexels-minan1398-853168.jpg&fm=jpg",
+  "members" : [
+          1
+  ]
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <br>
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>admin_id</b>&nbsp;int (userid) | <b>name</b>&nbsp;string | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string | <b>members</b>&nbsp;[]int64 | <b>created_at</b>&nbsp;time | <b>updated_at</b>&nbsp;time
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": {
+      "id": 2,
+      "admin_id": 1,
+      "name": "New group",
+      "about": "group description",
+      "image": "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?cs=srgb&dl=pexels-minan1398-853168.jpg&fm=jpg",
+      "members": [
+          1
+      ],
+      "create_at": "2024-07-09T17:20:06+05:30",
+      "updated_at": "2024-07-09T17:20:06+05:30"
+  }
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+          <section class="docs-section" id="group-2">
+            <h2 class="section-heading">2. Add member</h2>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /groups/addmember</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Add members to an existing group.</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>admin_id</b>&nbsp;int (userid) | <b>group_id</b>&nbsp;int | <b>members</b>&nbsp;[]int64
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+    "admin_id" : 1,
+    "group_id" : 1,
+    "members" : [
+        2,
+        3
+    ]
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <div class="code-container">
+                <pre id="">
+{
+  "message": "members were added into the group"
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+          <section class="docs-section" id="group-3">
+            <h2 class="section-heading">3. Get all Groups</h2>
+            <p><b>Method :</b>
+              <code> GET</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /groups/user/:uid</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Gives all groups where the user with <code class="attrib">uid</code>is a member.
+                </code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                Path Parameter <br>
+                <b>uid</b>&nbsp;int (userid)
+              </div>
+            </p>
+            <p><b>Response :</b> 
+              <br>
+              List of Groups
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>admin_id</b>&nbsp;int (userid) | <b>name</b>&nbsp;string | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string | <b>members</b>&nbsp;[]int64 | <b>created_at</b>&nbsp;time | <b>updated_at</b>&nbsp;time
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": [
+      {
+          "id": 1,
+          "admin_id": 1,
+          "name": "Group 1",
+          "about": "regular chattings",
+          "image": "jdjd",
+          "members": null,
+          "create_at": "2024-06-20T10:27:32Z",
+          "updated_at": "2024-06-20T10:27:32Z"
+      },
+      {
+          "id": 2,
+          "admin_id": 1,
+          "name": "New group",
+          "about": "group description",
+          "image": "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?cs=srgb&dl=pexels-minan1398-853168.jpg&fm=jpg",
+          "members": null,
+          "create_at": "2024-07-09T17:20:06Z",
+          "updated_at": "2024-07-09T17:20:06Z"
+      }
+  ]
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+          <section class="docs-section" id="group-4">
+            <h2 class="section-heading">4. Get Group Details</h2>
+            <p><b>Method :</b>
+              <code> GET</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /groups/:gid</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Get details of a specific group by its <code>group_id</code>.</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                Path parameter <br>
+                <b>gid</b>&nbsp;int (groupid)
+              </div>
+            </p>
+            <p><b>Response :</b> 
+              <br>
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>admin_id</b>&nbsp;int (userid) | <b>name</b>&nbsp;string | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string | <b>members</b>&nbsp;[]int64 | <b>created_at</b>&nbsp;time | <b>updated_at</b>&nbsp;time
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": {
+      "id": 2,
+      "admin_id": 1,
+      "name": "New group",
+      "about": "group description",
+      "image": "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?cs=srgb&dl=pexels-minan1398-853168.jpg&fm=jpg",
+      "members": null,
+      "create_at": "2024-07-09T17:20:06Z",
+      "updated_at": "2024-07-09T17:20:06Z"
+  }
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+          <section class="docs-section" id="group-5">
+            <h2 class="section-heading">5. Remove member</h2>
+            <p><b>Method :</b>
+              <code> DELETE</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /groups/:gid/:uid</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Remove member form a group by <code class="attrib">group_id</code> and <code class="attrib">user_id</code>.</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                Path parameter <br>
+                <b>gid</b>&nbsp;int (groupid) | <b>uid</b>&nbsp;int (userid)
+              </div>
+            </p>
+            <p><b>Response :</b> 
+              <br>
+              <div class="code-container">
+                <pre id="">
+{
+  "message" : "user removed from group."
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+          <section class="docs-section" id="group-6">
+            <h2 class="section-heading">6. Delete group message</h2>
+            <p><b>Method :</b>
+              <code> DELETE</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /groups/:gid</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Delete a group by its <code class="attrib">group_id</code>.</code>
+            </p>
+            </p>
+            <p><b>Response :</b> 
+              <br>
+              <div class="code-container">
+                <pre id="">
+{
+  "message" : "group deleted successfully."
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+          <section class="docs-section" id="group-7">
+            <h2 class="section-heading">7. Update group details</h2>
+            <p><b>Method :</b>
+              <code> PUT</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /groups</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Update group details such as name, about, or image.</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>id</b>&nbsp;int (groupid) | <b>admin_id</b>&nbsp;string (owner of group) | <b>name</b>&nbsp;string | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "id" : 2,
+  "admin_id": 1,
+  "name": "new name",
+  "about": "new about",
+  "image": "your image here"
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <br>
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>admin_id</b>&nbsp;int (userid) | <b>name</b>&nbsp;string | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string | <b>members</b>&nbsp;[]int64 | <b>created_at</b>&nbsp;time | <b>updated_at</b>&nbsp;time
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": {
+      "id": 2,
+      "admin_id": 1,
+      "name": "new name",
+      "about": "new about",
+      "image": "your image here",
+      "members": null,
+      "create_at": "2024-07-09T17:20:06Z",
+      "updated_at": "2024-07-09T18:02:33+05:30"
+  }
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+        </article>
+
         <article class="docs-article" id="contact">
           <header class="docs-header">
             <h1 class="docs-heading">Contact Endpoints</h1>
@@ -1478,9 +1789,9 @@
             <p><b>Description :</b>
               <code>To add contact for user
                 <br>
-                <code class="attrib">uid</code> is the ID of the user to whom we want to add a contact
+                <code class="attrib">uid</code> is the ID of the user to whom we want to add a contact.
                 <br>
-                <code class="attrib">c_mobile</code>is the contact number of the user we want to add
+                <code class="attrib">c_mobile</code>is the contact number of the user we want to add.
               </code>
             </p>
             <p><b>Request :</b>
@@ -1529,7 +1840,7 @@
             </p>
             <p><b>Request :</b>
               <div class="code-container">
-Query Parameter
+Path Parameter
 <br>
                 <pre id="">
 <b>id</b>&nbsp;int               
@@ -1571,6 +1882,8 @@ Query Parameter
           </section>
 
         </article>
+
+        
 
 
        
