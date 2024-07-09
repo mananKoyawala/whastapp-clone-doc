@@ -388,64 +388,41 @@
           </li>
 
           <li class="nav-item section-title">
-            <a class="nav-link scrollto" href="#section-6">Web</a>
+            <a class="nav-link scrollto" href="#group">Group</a>
             <ul class="nav flex-column mt-2 lvl2">
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-6-1">Section Item 6.1</a>
+                <a class="nav-link scrollto" href="#group-1">Create group</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-6-2">Section Item 6.2</a>
+                <a class="nav-link scrollto" href="#group-2">Add memeber</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-6-3">Section Item 6.3</a>
+                <a class="nav-link scrollto" href="#group-3">Get memebers by id</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#message-4">Get group details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#message-5">Delete group message</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#message-6">Send message</a>
               </li>
             </ul>
           </li>
 
           <li class="nav-item section-title">
-            <a class="nav-link scrollto" href="#section-7">Mobile</a>
+            <a class="nav-link scrollto" href="#contact">Contact</a>
             <ul class="nav flex-column mt-2 lvl2">
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-7-1">Section Item 7.1</a>
+                <a class="nav-link scrollto" href="#contact-1">Add contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-7-2">Section Item 7.2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-7-3">Section Item 7.3</a>
+                <a class="nav-link scrollto" href="#contact-2">Get contact</a>
               </li>
             </ul>
           </li>
 
-          <li class="nav-item section-title">
-            <a class="nav-link scrollto" href="#section-8">Resources</a>
-            <ul class="nav flex-column mt-2 lvl2">
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-8-1">Section Item 8.1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-8-2">Section Item 8.2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-8-3">Section Item 8.3</a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item section-title">
-            <a class="nav-link scrollto" href="#section-9">FAQs</a>
-            <ul class="nav flex-column mt-2 lvl2">
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-9-1">Section Item 9.1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-9-2">Section Item 9.2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link scrollto" href="#item-9-3">Section Item 9.3</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
     </div>
@@ -995,7 +972,7 @@
           <header class="docs-header">
             <h1 class="docs-heading">User Endpoints</h1>
             <section class="docs-intro">
-              <h4>All routes of users are unprotected, means anyone can access it without JWT token.</h4>
+              <h4>All user routes are unprotected, meaning you don't need a JWT token to access resources.</h4>
             </section>
           </header>
 
@@ -1009,7 +986,7 @@
               <code> /signup</code>
             </p>
             <p><b>Description :</b>
-              <code>Register user with mobile number</code>
+              <code>Register user with a mobile number</code>
             </p>
             <p><b>Request :</b>
               <div class="code-container">
@@ -1056,7 +1033,7 @@
               <code> /login</code>
             </p>
             <p><b>Description :</b>
-              <code>Login user with mobile number</code>
+              <code>Login a user with a mobile number</code>
             </p>
             <p><b>Request :</b>
               <div class="code-container">
@@ -1097,7 +1074,7 @@
               <code> /verify</code>
             </p>
             <p><b>Description :</b>
-              <code>Verify the user details got by /login</code>
+              <code>Verify the user details obtained from /login</code>
             </p>
             <p><b>Request :</b>
               <div class="code-container">
@@ -1138,10 +1115,10 @@
               <code> /token</code>
             </p>
             <p><b>Description :</b>
-              <code>Get new token only by refresh_token</code>
+              <code>Get a new token using only the refresh_token</code>
             </p>
             <p><b>Request :</b>
-              Send Refresh token in Header as `X-AUTH-TOKEN`
+              Send the refresh token in header as `X-AUTH-TOKEN`
             </p>
             <p><b>Response :</b> 
               <div class="code-container">
@@ -1162,12 +1139,11 @@
 
         </article>
 
-
         <article class="docs-article" id="message">
           <header class="docs-header">
             <h1 class="docs-heading">Message Endpoints</h1>
             <section class="docs-intro">
-              <h4>All routes of message are protected, means you need JWT token to access resources.</h4>
+              <h4>All message routes are protected, meaning you need a JWT token to access resources.</h4>
             </section>
           </header>
 
@@ -1181,7 +1157,7 @@
               <code> /msgs</code>
             </p>
             <p><b>Description :</b>
-              <code>It pulls all the messages related to sender_id and receiver_id || <b>Note :</b>&nbsp;user can only access it's own resources only</code>
+              <code>It pulls all the messages related to sender_id and receiver_id || <b>Note :</b>&nbsp;user can only access their own resources.</code>
             </p>
             <p><b>Request :</b>
               <div class="code-container">
@@ -1239,7 +1215,6 @@
             </div>
             </p>
           </section>
-
 
           <section class="docs-section" id="message-2">
             <h2 class="section-heading">2. Pull all group messages</h2>
@@ -1308,7 +1283,6 @@
             </p>
           </section>
 
-
           <section class="docs-section" id="message-3">
             <h2 class="section-heading">3. Update read messages</h2>
             <p><b>Method :</b>
@@ -1318,10 +1292,10 @@
               <code> /msgs</code>
             </p>
             <p><b>Description :</b>
-              <code>It marked all the messages is_read as true by id</code>
+              <code>It marked all the messages as read by id</code>
             </p>
             <p><b>Request :</b>
-              List of id, sender_id, receiver_id
+              List of id, sender_id and receiver_id
               <div class="code-container">
                 <b>id</b>&nbsp;int | <b>sender_id</b>&nbsp;int  | <b>receiver_id</b>&nbsp;int 
               </div>
@@ -1399,7 +1373,7 @@
               <code> /msgs/group</code>
             </p>
             <p><b>Description :</b>
-              <code>Delete group message by id</code>
+              <code>Delete group message by id.</code>
             </p>
             <p><b>Request :</b>
               <div class="code-container">
@@ -1433,13 +1407,10 @@
             </p>
             <p><b>Description:</b>
               <code>
-                  We need to send messages over WebSockets to enable users to receive messages in real-time. This mechanism only sends messages to users who are currently connected via WebSockets.
-                  <br>
-                  For a simple message, set <code class="attrib">is_group_msg=false</code> and provide a proper <code class="attrib">receiver_id</code>.
-                  <br>
-                  For a group message, set <code class="attrib">is_group_msg=true</code> and provide a valid <code class="attrib">group_id</code>.
-                  <br>
-                  If these guidelines are not followed, your message will be dropped.
+                Messages are sent over WebSockets to enable real-time message reception by users currently connected. This mechanism only delivers messages to users connected via WebSockets.<br>
+                For a simple message, set <code class="attrib">is_group_msg=false</code> and provide a valid <code class="attrib">receiver_id</code>.<br>
+                For group messages, set <code class="attrib">is_group_msg=true</code> and provide a valid <code class="attrib">group_id</code>.<br>
+                Messages not adhering to these guidelines will be dropped.
               </code>
           </p>
             <p><b>Request :</b>
@@ -1487,290 +1458,122 @@
 
         </article>
 
-
-        <article class="docs-article" id="section-5">
+        <article class="docs-article" id="contact">
           <header class="docs-header">
-            <h1 class="docs-heading">Utilities</h1>
+            <h1 class="docs-heading">Contact Endpoints</h1>
             <section class="docs-intro">
-              <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus
-                condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh
-                convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce
-                in malesuada odio.</p>
+              <h4>All contact routes are protected, meaning you need a JWT token to access resources.</h4>
             </section>
           </header>
 
-          <section class="docs-section" id="item-5-1">
-            <h2 class="section-heading">Section Item 5.1</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
+
+          <section class="docs-section" id="contact-1">
+            <h2 class="section-heading">1. Add contact</h2>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /contacts</code>
+            </p>
+            <p><b>Description :</b>
+              <code>To add contact for user
+                <br>
+                <code class="attrib">uid</code> is the ID of the user to whom we want to add a contact
+                <br>
+                <code class="attrib">c_mobile</code>is the contact number of the user we want to add
+              </code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                <b>uid</b>&nbsp;int | <b>c_mobile</b>&nbsp;int
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "uid" : 1,
+  "c_mobile" : 8888888800
+}
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <br>
+              It returns id, uid (user ID who want to add contact), c_id (user ID who is going to be added to user's contacts)
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>uid</b>&nbsp;int | <b>c_id</b>&nbsp; </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": {
+      "id": 3,
+      "uid": 1,
+      "cid": 2
+  }
+}
+</pre>
+            </div>
+            </p>
           </section>
 
 
-          <section class="docs-section" id="item-5-2">
-            <h2 class="section-heading">Section Item 5.2</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-
-          <section class="docs-section" id="item-5-3">
-            <h2 class="section-heading">Section Item 5.3</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
+          <section class="docs-section" id="contact-2">
+            <h2 class="section-heading">2. Get contacts</h2>
+            <p><b>Method :</b>
+              <code> GET</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /contacts/:id</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Get all the contacts related to particular user by their ID.</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+Query Parameter
+<br>
+                <pre id="">
+<b>id</b>&nbsp;int               
+</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              List of Users <br>
+              <div class="code-container">
+                <b>id</b>&nbsp;int | <b>name</b>&nbsp;string | <b>mobile</b>&nbsp;int | <b>about</b>&nbsp;string | <b>image</b>&nbsp;string
+              </div>
+              <div class="code-container">
+                <pre id="">
+{
+  "data": [
+      {
+          "id": 2,
+          "name": "Raju",
+          "mobile": 8888888882,
+          "about": "we are here.",
+          "image": "https://unsplash.com/s/photos/image",
+          "last_seen": "2024-06-20T09:30:28Z",
+          "is_online": false
+      },
+      {
+        "id": 3,
+        "name": "Raju",
+        "mobile": 8888888883,
+        "about": "we are here.",
+        "image": "https://unsplash.com/s/photos/image",
+        "last_seen": "2024-06-20T10:23:18Z",
+        "is_online": false
+      }
+  ]
+}
+</pre>
+            </div>
+            </p>
           </section>
 
         </article>
 
 
-        <article class="docs-article" id="section-6">
-          <header class="docs-header">
-            <h1 class="docs-heading">Web</h1>
-            <section class="docs-intro">
-              <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus
-                condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh
-                convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce
-                in malesuada odio.</p>
-            </section>
-          </header>
-
-          <section class="docs-section" id="item-6-1">
-            <h2 class="section-heading">Section Item 6.1</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-
-          <section class="docs-section" id="item-6-2">
-            <h2 class="section-heading">Section Item 6.2</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-
-          <section class="docs-section" id="item-6-3">
-            <h2 class="section-heading">Section Item 6.3</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-        </article>
-
-
-        <article class="docs-article" id="section-7">
-          <header class="docs-header">
-            <h1 class="docs-heading">Mobile</h1>
-            <section class="docs-intro">
-              <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus
-                condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh
-                convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce
-                in malesuada odio.</p>
-            </section>
-          </header>
-
-
-          <section class="docs-section" id="item-7-1">
-            <h2 class="section-heading">Section Item 7.1</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-
-          <section class="docs-section" id="item-7-2">
-            <h2 class="section-heading">Section Item 7.2</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-
-          <section class="docs-section" id="item-7-3">
-            <h2 class="section-heading">Section Item 7.3</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-        </article>
-
-
-        <article class="docs-article" id="section-8">
-          <header class="docs-header">
-            <h1 class="docs-heading">Resources</h1>
-            <section class="docs-intro">
-              <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus
-                condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh
-                convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce
-                in malesuada odio.</p>
-            </section>
-          </header>
-
-
-          <section class="docs-section" id="item-8-1">
-            <h2 class="section-heading">Section Item 8.1</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-
-          <section class="docs-section" id="item-8-2">
-            <h2 class="section-heading">Section Item 8.2</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-
-          <section class="docs-section" id="item-8-3">
-            <h2 class="section-heading">Section Item 8.3</h2>
-            <p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo.
-              Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum
-              imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies
-              porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin
-              est. Vestibulum ultricies malesuada tempor.</p>
-          </section>
-
-        </article>
-
-
-        <article class="docs-article" id="section-9">
-          <header class="docs-header">
-            <h1 class="docs-heading">FAQs</h1>
-            <section class="docs-intro">
-              <p>Section intro goes here. You can list all your FAQs using the format below.</p>
-            </section>
-          </header>
-
-
-          <section class="docs-section" id="item-9-1">
-            <h2 class="section-heading">Section Item 9.1
-              <small>(FAQ Category One)</small>
-            </h2>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>What's sit amet quam eget lacinia?
-            </h5>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-              ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
-              fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-              justo. Nullam dictum felis eu pede mollis pretium.</p>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>How to ipsum dolor sit amet quam tortor?
-            </h5>
-            <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis
-              gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis
-              sed, nonummy id, metus. Nullam accumsan lorem in dui.
-            </p>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>Can I bibendum sodales?
-            </h5>
-            <p>Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.
-              Nullam accumsan lorem in dui.
-            </p>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>Where arcu sed urna gravida?
-            </h5>
-            <p>Aenean et sodales nisi, vel efficitur sapien. Quisque molestie diam libero, et elementum diam mollis ac.
-              In dignissim aliquam est eget ullamcorper. Sed id sodales tortor, eu finibus leo. Vivamus dapibus
-              sollicitudin justo vel fermentum. Curabitur nec arcu sed urna gravida lobortis. Donec lectus est,
-              imperdiet eu viverra viverra, ultricies nec urna.
-            </p>
-          </section>
-
-
-          <section class="docs-section" id="item-9-2">
-            <h2 class="section-heading">Section Item 9.2
-              <small>(FAQ Category Two)</small>
-            </h2>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>What's sit amet quam eget lacinia?
-            </h5>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-              ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
-              fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-              justo. Nullam dictum felis eu pede mollis pretium.</p>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>How to ipsum dolor sit amet quam tortor?
-            </h5>
-            <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis
-              gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis
-              sed, nonummy id, metus. Nullam accumsan lorem in dui.
-            </p>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>Can I bibendum sodales?
-            </h5>
-            <p>Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.
-              Nullam accumsan lorem in dui.
-            </p>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>Where arcu sed urna gravida?
-            </h5>
-            <p>Aenean et sodales nisi, vel efficitur sapien. Quisque molestie diam libero, et elementum diam mollis ac.
-              In dignissim aliquam est eget ullamcorper. Sed id sodales tortor, eu finibus leo. Vivamus dapibus
-              sollicitudin justo vel fermentum. Curabitur nec arcu sed urna gravida lobortis. Donec lectus est,
-              imperdiet eu viverra viverra, ultricies nec urna.
-            </p>
-          </section>
-
-
-          <section class="docs-section" id="item-9-3">
-            <h2 class="section-heading">Section Item 9.3
-              <small>(FAQ Category Three)</small>
-            </h2>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>How to dapibus sollicitudin justo vel fermentum?
-            </h5>
-            <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis
-              gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis
-              sed, nonummy id, metus. Nullam accumsan lorem in dui.
-            </p>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>How long bibendum sodales?
-            </h5>
-            <p>Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.
-              Nullam accumsan lorem in dui.
-            </p>
-            <h5 class="pt-3">
-              <i class="fas fa-question-circle me-1"></i>Where dapibus sollicitudin?
-            </h5>
-            <p>Aenean et sodales nisi, vel efficitur sapien. Quisque molestie diam libero, et elementum diam mollis ac.
-              In dignissim aliquam est eget ullamcorper. Sed id sodales tortor, eu finibus leo. Vivamus dapibus
-              sollicitudin justo vel fermentum. Curabitur nec arcu sed urna gravida lobortis. Donec lectus est,
-              imperdiet eu viverra viverra, ultricies nec urna.
-            </p>
-          </section>
-
-        </article>
+       
 
         <footer class="footer">
           <div class="container text-center py-5">
