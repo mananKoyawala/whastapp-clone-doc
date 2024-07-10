@@ -346,6 +346,15 @@
           </li>
 
           <li class="nav-item section-title">
+            <a class="nav-link scrollto" href="#ws">WebSocket</a>
+            <ul class="nav flex-column mt-2 lvl2">
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#ws-1">WebSocket connect<a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item section-title">
             <a class="nav-link scrollto" href="#user">User</a>
             <ul class="nav flex-column mt-2 lvl2">
               <li class="nav-item">
@@ -982,6 +991,41 @@
           </header>
         </article>
 
+        <article class="docs-article" id="ws">
+          <header class="docs-header">
+            <h1 class="docs-heading">WebSockets Endpoints</h1>
+            <section class="docs-intro">
+              <h4>All WebSockets routes are protected, meaning you need a JWT token to access resources.</h4>
+            </section>
+          </header>
+
+
+          <section class="docs-section" id="ws-1">
+            <h2 class="section-heading">1. Connect to WebSockets</h2>
+            <p><b>Method :</b>
+              <code> GET</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /ws/connect/:uid</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Connects user into WebSockets so the user can receive messages in real-time.
+                <br>
+                <code class="attrib">Note : The use can connect only once with same ID. If the user is already connected with an ID, theny cannot connect again with the same ID.</code> 
+              </code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                Path Parameter <br>
+                <b>uid</b>&nbsp;int (userid)
+              </div>
+            <p><b>Response :</b> 
+              <br>
+              If everything is well, then 101 Upgrader upgrades the connection to WebSockets.
+            </p>
+          </section>
+
+        </article>
 
         <article class="docs-article" id="user">
           <header class="docs-header">
