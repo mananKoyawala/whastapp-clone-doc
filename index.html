@@ -426,6 +426,18 @@
             </ul>
           </li>
 
+          <li class="nav-item section-title">
+            <a class="nav-link scrollto" href="#upload">Upload</a>
+            <ul class="nav flex-column mt-2 lvl2">
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#upload-1">Upload file</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#upload-2">Delete file</a>
+              </li>
+            </ul>
+          </li>
+
         </ul>
       </nav>
     </div>
@@ -1875,6 +1887,78 @@ Path Parameter
         "is_online": false
       }
   ]
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+        </article>
+
+        <article class="docs-article" id="upload">
+          <header class="docs-header">
+            <h1 class="docs-heading">Upload file Service Endpoints</h1>
+            <section class="docs-intro">
+              <h4>All upload service routes are protected, meaning you need a JWT token to access resources.</h4>
+            </section>
+          </header>
+
+
+          <section class="docs-section" id="upload-1">
+            <h2 class="section-heading">1. Upload file</h2>
+            <p><b>Method :</b>
+              <code> POST</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /file</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Upload file in AWS S3 bucket. Only <code class="attrib">.jpg, .jpeg, .png and .pdf </code> file are allowed.</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+                Form data <br>
+                <b>file</b>&nbsp;File
+              </div>
+            <p><b>Response :</b> 
+              <br>
+              It returns the uploaded, publicly accessible file URL.
+              <div class="code-container">
+                <pre id="">
+{
+  "data": [
+      "https://bucketname.s3.amazonaws.com/filename.extension"
+  ]
+}
+</pre>
+            </div>
+            </p>
+          </section>
+
+
+          <section class="docs-section" id="upload-2">
+            <h2 class="section-heading">2. Delete file</h2>
+            <p><b>Method :</b>
+              <code> DELETE</code>
+            </p>
+            <p><b>Endpoint :</b>
+              <code> /file</code>
+            </p>
+            <p><b>Description :</b>
+              <code>Deletes file by uploaded file URL.</code>
+            </p>
+            <p><b>Request :</b>
+              <div class="code-container">
+Form data
+<br>
+                <pre id=""><b>url</b>&nbsp;string</pre>
+            </div>
+            </p>
+            <p><b>Response :</b> 
+              <div class="code-container">
+                <pre id="">
+{
+  "message": "file deleted."
 }
 </pre>
             </div>
